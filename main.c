@@ -32,6 +32,12 @@ void get_hardware_info() {
     execute_command("wmic cpu get L2CacheSize /VALUE", "L2 Cache Size (KB)");
     execute_command("wmic cpu get L3CacheSize /VALUE", "L3 Cache Size (KB)");
 
+    printf("\nMotherboard Information:\n");
+    execute_command("wmic baseboard get Manufacturer,Product,SerialNumber /FORMAT:LIST", "Motherboard");
+
+    printf("\nBIOS Information:\n");
+    execute_command("wmic bios get Manufacturer,Name,SerialNumber /FORMAT:LIST", "BIOS");
+
     printf("\nPhysical Memory Information:\n");
     execute_command("wmic memorychip get Capacity,Speed /FORMAT:LIST", "Memory Chip");
 
@@ -40,6 +46,9 @@ void get_hardware_info() {
 
     printf("\nStorage Devices:\n");
     execute_command("wmic logicaldisk get Caption,Size,FreeSpace /FORMAT:LIST", "Logical Disk");
+
+    printf("\nDisk Partitions:\n");
+    execute_command("wmic partition get DeviceID,Type,Size /FORMAT:LIST", "Partition");
 
     printf("\nNetwork Interfaces:\n");
     execute_command("wmic nic where \"NetEnabled=true\" get Name,MACAddress,Speed /FORMAT:LIST", "Network Interface");
@@ -77,6 +86,14 @@ void get_hardware_info() {
     execute_command("sysctl -n hw.l2cachesize", "L2 Cache Size (Bytes)");
     execute_command("sysctl -n hw.l3cachesize", "L3 Cache Size (Bytes)");
 
+    printf("\nMotherboard Information:\n");
+    execute_command("system_profiler SPHardwareDataType | grep 'Model Name'", "Model Name");
+    execute_command("system_profiler SPHardwareDataType | grep 'Serial Number'", "Serial Number");
+
+    printf("\nBIOS Information:\n");
+    execute_command("system_profiler SPHardwareDataType | grep 'Boot ROM Version'", "Boot ROM Version");
+    execute_command("system_profiler SPHardwareDataType | grep 'SMC Version'", "SMC Version");
+
     printf("\nPhysical Memory Information:\n");
     execute_command("sysctl -n hw.memsize", "Total Memory Size (Bytes)");
     execute_command("sysctl -n hw.pagesize", "Page Size (Bytes)");
@@ -86,6 +103,9 @@ void get_hardware_info() {
 
     printf("\nStorage Devices:\n");
     execute_command("df -h", "Disk Usage");
+
+    printf("\nDisk Partitions:\n");
+    execute_command("diskutil list", "Partition");
 
     printf("\nNetwork Interfaces:\n");
     execute_command("ifconfig -a | sed 's/[ \t].*//;/^$/d'", "Network Interface");
