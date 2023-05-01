@@ -1,6 +1,6 @@
 # Hardware Information Tool
 
-This C program retrieves and displays hardware information for your system, including CPU, memory, GPU, storage devices, and network interfaces. It works on Windows, macOS, and Linux.
+This C program retrieves and displays hardware information for your system, including CPU, memory, GPU, storage devices, and network interfaces. It works on Windows and Unix systems like macOS and Linux.
 
 ## Prerequisites
 
