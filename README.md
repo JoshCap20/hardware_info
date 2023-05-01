@@ -25,6 +25,15 @@ To run the program, execute the compiled binary:
 hardware_info.exe
 
 The program will display detailed hardware information for your system.
+- CPU Information (Model, Clock Speed, # of Cores, # of Logical Processors, L2 Cache Size, L3 Cache Size)
+- Motherboard Information (Make, Name, Serial Number)
+- Physical Memory Information (Capacity, Speed)
+- BIOS Information (Total Memory Size, Page Size)
+- GPU Information (Model)
+- Storage Devices
+- Disk Partitions
+- Network Interfaces
+- System Uptime
 
 ## Cleaning up
 
